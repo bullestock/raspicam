@@ -1,0 +1,18 @@
+scp .ssh/id_rsa pi@<ip>:.ssh
+scp motion.conf pi@<ip>:
+
+Run scp and accept key
+
+On pi:
+
+sudo apt upgrade 
+sudo apt install motion 
+sudo mkdir /var/log/motion
+sudo chown motion /var/log/motion/
+sudo mv motion.conf /etc/motion
+sudo chown motion /etc/motion/motion.conf
+sudo apt install cheese
+sudo visudo
+Add:
+        motion  ALL=(pi) NOPASSWD: /usr/bin/scp
+sudo nano /etc/default/motion
